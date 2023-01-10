@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSourceConfig } from './config/data.source';
 import { UsersModule } from './users/users.module';
 import { LocationsModule } from './locations/locations.module';
+import { ReviewsModule } from './reviews/reviews.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { LocationsModule } from './locations/locations.module';
     TypeOrmModule.forRoot({ ...DataSourceConfig }),
     UsersModule,
     LocationsModule,
+    ReviewsModule,
   ],
 })
 export class AppModule {}

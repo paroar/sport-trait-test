@@ -1,6 +1,7 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { ILocation } from '../../interfaces/locations.interface';
 import { BaseEntity } from '../../config/base.entity';
+import { ReviewsEntity } from '../../reviews/entities/reviews.entity';
 
 @Entity({ name: 'locations' })
 export class LocationsEntity extends BaseEntity implements ILocation {
@@ -12,4 +13,7 @@ export class LocationsEntity extends BaseEntity implements ILocation {
 
   @Column()
   openingHours: string;
+
+  @OneToMany(() => ReviewsEntity, (review) => review.location)
+  reviews: ReviewsEntity[];
 }
