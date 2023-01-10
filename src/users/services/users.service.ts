@@ -6,7 +6,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { ErrorManager } from '../../utils/error.manager';
-import { UserDTO, UserUpdateDTO } from '../dtos/user.dto';
+import { UserDTO, UserUpdateDTO } from '../dto/user.dto';
 import { UsersEntity } from '../entitites/user.entity';
 
 @Injectable()
