@@ -43,6 +43,24 @@ export class UsersService {
     }
   }
 
+  public async getUserReviews(userId: string): Promise<UsersEntity> {
+    try {
+      const user = await this.userRepository.findOne({
+        where: { id: userId },
+        relations: ['reviews'],
+      });
+      if (!user) {
+        throw new NotFoundException(`User ${userId} not found`);
+      }
+      return user;
+    } catch (error) {
+      throw ErrorManager.createSignatureError({
+        message: error.message,
+        status: error.status,
+      });
+    }
+  }
+
   public async updateUser(
     userId: string,
     body: UserUpdateDTO,
