@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { LocationsService } from '../services/locations.service';
 import { LocationsController } from './locations.controller';
 
 describe('LocationsController', () => {
@@ -7,7 +8,11 @@ describe('LocationsController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [LocationsController],
-    }).compile();
+      providers: [LocationsService],
+    })
+      .overrideProvider(LocationsService)
+      .useValue(null)
+      .compile();
 
     controller = module.get<LocationsController>(LocationsController);
   });
